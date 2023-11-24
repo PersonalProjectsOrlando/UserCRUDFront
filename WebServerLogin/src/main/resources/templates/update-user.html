@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+</head>
+<body class="d-flex align-items-center justify-content-center" style="height: 60vh;">
+<form th:object="${userUpdate}" action="#" th:method="put" th:action="@{/usuario/front/update}" style="border: 1px solid #ccc; padding: 20px; border-radius: 10px;">
+    <h1>Update User</h1>
+    <div>
+        <label for="input_nombre_usuario">Name User</label>
+        <input th:field="*{nombreUsuario}" th:value="*{nombreUsuario}" id="input_nombre_usuario" type="text" placeholder="Enter name">
+    </div>
+    <div>
+        <label for="input_password">Password</label>
+        <input th:field="*{password}" th:value="*{password}" id="input_password" type="password" placeholder="E nter password">
+    </div>
+    <div>
+        <label for="input_nombre_completo">Full Name</label>
+    <input th:field="*{nombre}" th:value="*{nombre}" id="input_nombre_completo" type="text" placeholder="Enter Full Name">
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ROLES</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="rol : ${ROLES}">
+            <td><input th:field="*{roles}" type="checkbox"  th:text="${rol.name}" th:value="${rol.name}"></td>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+    <button type="submit">Update User</button>
+</form>
+
+</body>
+</html>
